@@ -1,0 +1,17 @@
+.product-visual .render-panel{display:grid;place-items:center;bottom:145px}
+.nova-puppet{position:relative;display:block;aspect-ratio:2/3;height:100%;width:auto;max-width:100%;min-width:0;padding:0;border:0;background:none;transform-style:preserve-3d;transform-origin:50% 66%;touch-action:pan-y;-webkit-tap-highlight-color:transparent;will-change:transform;outline-offset:7px}
+.product-visual .nova-puppet .studio-product{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:fill;transform:none!important;animation:none!important;pointer-events:none;filter:drop-shadow(0 25px 35px #0005)}
+.nova-face-panel{position:absolute;left:22.3%;top:7.3%;width:67.5%;height:41.7%;overflow:hidden;border-radius:50%;pointer-events:none;mask-image:radial-gradient(ellipse closest-side,#000 95%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse closest-side,#000 95%,transparent 100%);transform:translateZ(.1px)}
+.expression-image{position:absolute;left:-20%;top:-20%;width:140%;height:140%;max-width:none;object-fit:fill;opacity:0;transition:opacity .7s ease;pointer-events:none;user-select:none}
+.expression-image.active{opacity:1}
+.nova-face-panel{z-index:3}
+.expression-controls{position:absolute;bottom:73px;left:50%;transform:translateX(-50%);display:flex;gap:18px;z-index:6}
+.expression-controls button{display:flex;flex-direction:column;align-items:center;gap:5px;background:none;border:1px solid transparent;border-radius:11px;padding:6px 9px 7px;min-width:52px;color:#647e98;transition:background .2s,border-color .2s,color .2s}
+.expression-controls button img{display:block;width:35px;height:35px;opacity:.65;transition:opacity .2s,transform .2s}
+.expression-controls button span{font:8px/1.3 monospace;letter-spacing:.1em}
+.expression-controls button.selected{background:#a0ccf110;border-color:#a0ccf12c;color:#c3eaf3}
+.expression-controls button.selected img,.expression-controls button:hover img{opacity:1;transform:translateY(-2px)}
+.visual-motion-controls{bottom:31px}.visual-motion-controls button{padding:7px 14px;font-family:inherit;font-size:11px}.product-visual .visual-caption{bottom:7px;font-size:10px;white-space:nowrap}
+.product-marker{transition:color .6s}.product-aura{transition:background .7s}.product-visual[data-mood="gold"] .product-aura{background:radial-gradient(circle,#d79a3d26,transparent 68%)}.product-visual[data-mood="mint"] .product-aura{background:radial-gradient(circle,#5ac9ac26,transparent 68%)}.product-visual[data-mood="blue"] .product-aura{background:radial-gradient(circle,#377fcf30,transparent 68%)}
+@media(max-width:700px){.product-visual{height:590px}.product-visual .render-panel{inset:0 -15px 140px}.expression-controls{gap:15px;bottom:69px}.expression-controls button{min-width:50px;padding:5px 7px}.expression-controls button img{width:33px;height:33px}.visual-motion-controls{bottom:29px}.product-visual .visual-caption{bottom:7px;font-size:9px}}
+@media(prefers-reduced-motion:reduce){.expression-image,.expression-controls button,.expression-controls button img,.product-aura{transition:none}.expression-controls button.selected img,.expression-controls button:hover img{transform:none}}

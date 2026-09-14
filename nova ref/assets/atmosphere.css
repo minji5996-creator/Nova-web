@@ -1,0 +1,7 @@
+.nova-pixel-trail{position:fixed;inset:0;width:100%;height:100%;z-index:2147483646;pointer-events:none!important}
+.nova-audio-toggle{position:fixed;right:24px;bottom:24px;z-index:1000;display:flex;align-items:center;gap:10px;padding:11px 16px;border:1px solid #b6dbff35;border-radius:30px;background:#0a1425dd;color:#acc5dc;backdrop-filter:blur(16px);font-family:inherit;font-size:12px;line-height:1.5;box-shadow:0 5px 20px #0003;transition:border-color .2s,color .2s}
+.nova-audio-toggle:hover{border-color:#a7e9ef88;color:#ecffff}.nova-audio-toggle:focus-visible{outline:2px solid #a9f0ef;outline-offset:4px}.nova-audio-toggle.playing{color:#a9efde;border-color:#b1f3db50}
+.sound-bars{height:14px;display:flex;align-items:center;gap:3px}.sound-bars i{display:block;width:2px;height:3px;background:currentColor}.sound-bars i:nth-child(2){height:8px}.playing .sound-bars i{animation:nova-sound-level 1.4s ease-in-out infinite}.playing .sound-bars i:nth-child(2){animation-delay:-.4s}.playing .sound-bars i:nth-child(3){animation-delay:-.8s}
+@keyframes nova-sound-level{0%,100%{height:4px}50%{height:13px}}
+@media(max-width:700px){.nova-audio-toggle{right:14px;bottom:calc(14px + env(safe-area-inset-bottom));padding:9px 13px;font-size:11px}.site-footer{padding-bottom:80px!important}}
+@media(prefers-reduced-motion:reduce){.nova-pixel-trail{display:none}.playing .sound-bars i{animation:none}.nova-audio-toggle{transition:none}}
