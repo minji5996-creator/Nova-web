@@ -1,0 +1,9 @@
+/* Coordinates put the click point inside NOVA's forehead. Native fallbacks retained. */
+@media (any-pointer:fine){
+ html,body,body *{cursor:url('./nova-cursor.png') 14 6,auto!important}
+ body :is(a,button,summary,label[for],[role="button"],select),body :is(a,button,summary,[role="button"]) *{cursor:url('./nova-cursor-link.png') 14 6,pointer!important}
+ body :is(input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]),textarea,[contenteditable="true"]),body [contenteditable="true"] *{cursor:text!important}
+ body :is(input[type="checkbox"],input[type="radio"],input[type="range"],input[type="color"],input[type="file"]){cursor:url('./nova-cursor-link.png') 14 6,pointer!important}
+ body :is(button:disabled,input:disabled,select:disabled,[aria-disabled="true"]),body [aria-disabled="true"] *{cursor:not-allowed!important}
+}
+@media (forced-colors:active){html,body,body *{cursor:auto!important}body :is(a,button,summary){cursor:pointer!important}body :is(input,textarea,[contenteditable="true"]){cursor:text!important}}

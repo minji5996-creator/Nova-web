@@ -1,0 +1,345 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="NOVA AI Concierge — 무엇을 도와드릴까요?"><meta name="theme-color" content="#080c0e"><title>무엇을 도와드릴까요? | NOVA · COSMIC DOT</title><link rel="stylesheet" href="assets/guide.css"><link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/cinematic.css"><link rel="stylesheet" href="assets/cursor.css"><link rel="stylesheet" href="assets/atmosphere.css"></head><body class="guide-page"><header class="site-header"><a class="wordmark" href="index.html" aria-label="NOVA 홈">NOVΛ<span>by COSMIC DOT</span></a><nav aria-label="주 메뉴"><a href="device.html" >디바이스</a><a href="features.html" >기능</a><a href="story.html" >스토리</a><a href="play.html">PLAY</a><a href="guide.html" >시작하기</a><a href="support.html" aria-current="page">고객지원</a></nav><a class="header-cta" href="guide.html">NOVA 시작하기 <span>↗</span></a></header><main id="main"><div class="page-intro"><div class="eyeline">NOVA / SUPPORT</div><h1>무엇을 도와드릴까요?</h1><p></p></div><section id="codes" class="sec-pad">
+  <div class="wrap">
+    <div class="cd-head rv">
+      <div class="eyebrow">SUPPORT — 12</div>
+      <h2>지원 코드 검색</h2>
+      <p>연결 실패 화면에 뜨는 <b>BF-··</b> / <b>CL-··</b> 코드를 검색해 보세요. 코드는 실패 지점이 아니라 <b>통과 지점</b>입니다 &mdash; 화면에 뜬 코드까지는 성공했고, 고장은 그 바로 다음 단계에 있습니다.</p>
+      <div class="cd-meta">
+        <span>적용 앱 1.2.13 이상</span><span>코드 53개</span><span>최종 2026-08-28</span>
+      </div>
+    </div>
+
+    <div class="rv">
+      <div class="cd-search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="cdq" type="search" autocomplete="off" spellcheck="false"
+               placeholder="코드나 증상으로 검색 &mdash; BF-RC, 와이파이, 비밀번호…"
+               aria-label="지원 코드 검색">
+      </div>
+      <div class="cd-filters" id="cdf">
+        <button class="on" data-s="0">전체</button>
+        <button data-s="1">단계 1 · 블루투스 연결</button>
+        <button data-s="2">단계 2 · 와이파이 전달</button>
+        <button data-s="3">단계 3 · 기기 등록</button>
+        <button data-s="4">단계 4 · 마무리</button>
+      </div>
+      <p class="cd-count" id="cdn"></p>
+      <div class="cd-list" id="cdl"></div>
+    </div>
+  </div>
+</section><section id="contact" class="dark sec-pad">
+  <div class="wrap">
+    <div class="contact">
+      <div class="rv">
+        <div class="eyebrow">SUPPORT — 11</div>
+        <h2>문의 &amp; 지원</h2>
+        <p>사용 중 궁금한 점, 오류, 구성품 누락 등 어떤 내용이든 비즈톡방으로 편하게 남겨주세요. 베타 테스터분들의 메시지는 담당자가 직접 확인하고 답변드립니다.</p>
+      </div>
+      <div class="rv">
+        <a class="btn mint" href="https://pf.kakao.com/_RxaxcBX" target="_blank" rel="noopener">
+          <span>카카오톡 비즈톡방 문의하기</span><span class="arw">↗</span>
+        </a>
+        <a class="btn" href="https://www.cosmic-dot.com/" target="_blank" rel="noopener">
+          <span>www.cosmic-dot.com</span><span class="arw">↗</span>
+        </a>
+        <p class="btn-note">
+          운영 시간 월–금 09:00–18:00 · 주말 및 공휴일 휴무<br>그 외 시간에 남겨주신 문의는 다음 영업일에 순차적으로 답변드립니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</section></main><footer class="site-footer"><a class="wordmark" href="index.html">NOVΛ</a><p>작은 존재, 더 가까운 일상.</p><div><a href="beta.html">베타 안내</a><a href="privacy.html">개인정보 안내</a><a href="safety.html">안전 및 주의사항</a><a href="support.html">문의하기 ↗</a></div><small>© 2026 COSMIC DOT Corporation. V0 Beta Tester Edition.</small></footer><script>
+/* 내비게이션 : 현재 보고 있는 섹션 표시 */
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.topnav a[href^="#"]'));
+  if(!links.length||!('IntersectionObserver' in window)) return;
+  var map={};
+  links.forEach(function(a){
+    var el=document.querySelector(a.getAttribute('href'));
+    if(el) map[el.id]=a;
+  });
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(l){l.classList.remove('active')});
+        if(map[e.target.id]) map[e.target.id].classList.add('active');
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px',threshold:0});
+  Object.keys(map).forEach(function(id){ io.observe(document.getElementById(id)); });
+})();
+
+/* 온보딩 영상 : Android · iOS 선택 + 클릭 시 재생 */
+(function(){
+  /* ▼▼ 영상 ID만 바꿔 넣으면 됩니다. 유튜브 주소의 끝부분(shorts/○○○○) ▼▼ */
+  var VIDEOS = {
+    a: { id:'PdwI5JjomKU', label:'Android 설치 · 연결' },
+    i: { id:'4mb7vTm2uxY', label:'iOS 설치 · 연결' }
+  };
+  /* ▲▲ id가 비어 있으면 '영상 준비 중'으로 표시됩니다 ▲▲ */
+
+  var box=document.getElementById('vidbox');
+  if(!box) return;
+  var thumb=document.getElementById('vidthumb'), label=document.getElementById('vidlabel'),
+      empty=document.getElementById('vidempty'), cap=document.getElementById('vidcap'),
+      link=document.getElementById('vidlink'), tabs=[].slice.call(document.querySelectorAll('.vt')),
+      cur=null, playing=false;
+
+  function shell(){
+    box.innerHTML='<img class="vid-thumb" id="vidthumb" alt="온보딩 영상 미리보기">'
+      +'<span class="vid-shade"></span>'
+      +'<span class="vid-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>'
+      +'<span class="vid-label" id="vidlabel"></span>'
+      +'<div class="vid-empty" id="vidempty" hidden>영상 준비 중<span>곧 업로드될 예정입니다</span></div>';
+    thumb=document.getElementById('vidthumb');
+    label=document.getElementById('vidlabel');
+    empty=document.getElementById('vidempty');
+    playing=false;
+  }
+
+  function show(k){
+    var v=VIDEOS[k]; cur=k;
+    if(playing) shell();
+    tabs.forEach(function(t){ t.classList.toggle('on', t.getAttribute('data-k')===k); });
+    cap.textContent=v.label.toUpperCase();
+    if(!v.id){
+      empty.hidden=false; box.classList.add('empty');
+      link.style.display='none'; label.innerHTML='';
+      thumb.removeAttribute('src');
+      return;
+    }
+    empty.hidden=true; box.classList.remove('empty');
+    link.style.display=''; link.href='https://www.youtube.com/watch?v='+v.id;
+    label.innerHTML=v.label+'<b>영상으로 보기</b>';
+    var list=['https://i.ytimg.com/vi/'+v.id+'/oardefault.jpg',
+              'https://i.ytimg.com/vi/'+v.id+'/maxresdefault.jpg',
+              'https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg'], n=0;
+    thumb.style.visibility='';
+    thumb.onerror=function(){ if(n<list.length){ thumb.src=list[n++]; } else { thumb.style.visibility='hidden'; } };
+    thumb.onload=function(){ if(thumb.naturalWidth<200 && n<list.length) thumb.src=list[n++]; };
+    thumb.src=list[n++];
+  }
+
+  function play(){
+    var v=VIDEOS[cur]; if(!v||!v.id||playing) return;
+    box.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+v.id+'?autoplay=1&rel=0&playsinline=1" '
+      +'title="'+v.label+'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '
+      +'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+    playing=true; box.style.cursor='default';
+  }
+
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){ box.style.cursor=''; show(t.getAttribute('data-k')); });
+  });
+  box.addEventListener('click',play);
+  box.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); play(); } });
+  show('a');
+})();
+
+/* 웹툰 확대 보기 */
+(function(){
+  var box=document.querySelector('.toon .ph'), lb=document.getElementById('lb');
+  if(!box||!lb) return;
+  var big=lb.querySelector('img'), src=box.querySelector('img');
+  box.addEventListener('click',function(){
+    if(!big.src) big.src=src.currentSrc||src.src;
+    lb.classList.add('on'); document.body.classList.add('lbopen'); lb.scrollTop=0;
+  });
+  lb.addEventListener('click',function(){ lb.classList.remove('on'); document.body.classList.remove('lbopen'); });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){ lb.classList.remove('on'); document.body.classList.remove('lbopen'); }
+  });
+})();
+
+(function(){
+  var items = document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){
+    items.forEach(function(el){el.classList.add('in')});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.06});
+  items.forEach(function(el){io.observe(el)});
+})();
+
+/* 이미지 파일이 아직 없으면 자리표시 박스만 보이도록 처리 */
+(function(){
+  document.querySelectorAll('.ph img').forEach(function(img){
+    var box = img.parentElement;
+    var ok   = function(){ box.classList.add('filled'); img.style.display=''; };
+    var hide = function(){ img.style.display='none'; box.classList.remove('filled'); };
+    img.addEventListener('load', ok);
+    img.addEventListener('error', hide);
+    if(img.complete){ img.naturalWidth > 0 ? ok() : hide(); }
+  });
+})();
+</script><script type="application/json" id="cddata">[{"code":"BF-EP","stage":1,"stageName":"블루투스 연결","fields":{"여기까지 됐다":"기기와 무선 링크가 맺어졌습니다.","다음에서 멈췄다":"서비스 탐색에 들어가기도 전입니다. 링크가 붙자마자 끊어졌다는 뜻입니다.","대처":"1.2.13부터는 자동 재시도를 거치므로 이 코드는 드뭅니다. 그래도 나온다면 기기 쪽 문제일 가능성이 높습니다 — 기기를 껐다 켠 뒤 한 번 더 시도하고, 반복되면 개발에 전달해 주세요."}},{"code":"BF-SV","stage":1,"stageName":"블루투스 연결","fields":{"여기까지 됐다":"기기가 제공하는 통신 창구를 찾았습니다.","다음에서 멈췄다":"기기가 보내는 알림을 받겠다고 등록하는 단계입니다.","대처":"휴대폰 블루투스를 껐다 켠 뒤 앱을 완전히 종료했다가 다시 시도해 주세요. 안드로이드는 이때 오래된 연결 정보가 정리됩니다."}},{"code":"BF-NR","stage":1,"stageName":"블루투스 연결","fields":{"여기까지 됐다":"기기 알림을 받을 준비가 끝났습니다.","다음에서 멈췄다":"암호화 채널을 여는 첫 대화에서 기기가 답하지 않았습니다.","대처":"기기를 30cm 이내로 가까이 두고 다시 시도해 주세요. 다른 휴대폰이 그 기기에 이미 연결돼 있으면 안 됩니다 — 기기는 한 번에 한 대만 받습니다."}},{"code":"BF-VR","stage":1,"stageName":"블루투스 연결","fields":{"여기까지 됐다":"기기가 자기 버전을 알려 왔습니다.","다음에서 멈췄다":"암호 키를 주고받는 단계입니다. 기기가 계산 중에 응답을 놓쳤을 수 있습니다.","대처":"기기를 껐다 켠 뒤 다시 시도해 주세요. 여러 번 반복되면 기기가 과부하 상태일 수 있으니 몇 분 두었다가 시도합니다."}},{"code":"BF-SE","stage":1,"stageName":"블루투스 연결","fields":{"여기까지 됐다":"암호화 채널이 완성됐습니다. 연결의 가장 어려운 부분은 넘겼습니다.","다음에서 멈췄다":"와이파이 목록을 받아오거나 다음 화면으로 넘어가는 구간입니다.","대처":"다시 시도하면 대개 통과합니다. 와이파이 목록이 비어 보여도 이름을 직접 입력해 진행할 수 있습니다."}},{"code":"BF-DE","stage":1,"stageName":"블루투스 연결","fields":{"무슨 일":"기기가 보낸 신호가 깨진 채 도착했습니다.","왜":"전파 간섭이나 거리 때문입니다. 전자레인지, 공유기 바로 옆, 금속 선반 근처에서 잘 생깁니다.","대처":"기기와 휴대폰을 가까이 두고 주변 전자기기에서 떨어뜨린 뒤 다시 시도해 주세요."}},{"code":"BF-DO","stage":1,"stageName":"블루투스 연결","fields":{"무슨 일":"연결이 기기 쪽에서 끊어졌습니다.","왜":"기기가 재시작했거나, 거리가 멀어졌거나, 설정 모드에서 빠져나갔을 수 있습니다.","대처":"기기 앞면 사각 버튼을 2초 이상 길게 눌러 설정 모드로 되돌리고, 화면에 QR이 뜨는지 확인한 뒤 다시 시도해 주세요."}},{"code":"BF-DX","stage":1,"stageName":"블루투스 연결","fields":{"무슨 일":"앱이 의도적으로 연결을 정리했습니다.","대처":"재시도나 화면 이동 과정에서 정상적으로 나오는 표시입니다. 이 코드만으로는 문제가 아닙니다."}},{"code":"BF-RX","stage":1,"stageName":"블루투스 연결","fields":{"무슨 일":"지금 단계와 상관없는 신호가 와서 앱이 무시했습니다.","대처":"이전 시도의 잔여 신호일 때가 많습니다. 단독으로는 문제가 아니며, 다시 시도하면 정리됩니다."}},{"code":"BF-DP","stage":1,"stageName":"블루투스 연결","fields":{"무슨 일":"연결 화면을 벗어나면서 정리됐습니다.","대처":"사용자가 뒤로 가거나 앱이 화면을 닫을 때 나옵니다. 문제가 아닙니다. 와이파이 전달 “와이파이에 연결하는 중이에요” 구간입니다. 앱이 기기에 와이파이 정보를 넘기고, 기기가 직 접 공유기에 붙습니다. 이 단계는 기기와 공유기 사이의 문제가 대부분입니다."}},{"code":"BF-RC","stage":2,"stageName":"와이파이 전달","fields":{"여기까지 됐다":"기기가 “지금 와이파이에 붙는 중”이라고 알려 왔습니다.","다음에서 멈췄다":"거기서 더 나아가지 못했습니다. 가장 흔한 실패 지점입니다.","대처":"세 가지가 전부 이 코드로 모입니다. 순서대로 확인해 주세요. ① 비밀번호 — 대소문자까지 정확한지 ② 주파수 — 기기는 2.4GHz만 씁니다. 5GHz 전용 이름이면 붙지 못합니다 ③ 신호 — 공유기와 너무 멀거나 벽이 많은지"}},{"code":"BF-RF","stage":2,"stageName":"와이파이 전달","fields":{"무슨 일":"기기가 “와이파이에 붙지 못했다”고 명확히 알려 왔습니다.","대처":"비밀번호를 다시 확인하는 것이 첫 번째입니다. 맞다면 공유기가 2.4GHz를 켜 두었는지, 새 기기 접속을 막는 설정이 있는지 봐 주세요."}},{"code":"BF-RW","stage":2,"stageName":"와이파이 전달","fields":{"여기까지 됐다":"연결 명령을 보내고 기기의 답을 기다리는 중이었습니다.","다음에서 멈췄다":"기기가 결과를 알려 주지 않았습니다.","대처":"기기를 공유기 가까이 옮기고 다시 시도해 주세요. 기기가 재시작 중이면 답이 늦어질 수 있습니다."}},{"code":"BF-60","stage":2,"stageName":"와이파이 전달","fields":{"무슨 일":"60초 동안 기기가 스스로 결과를 알려 주지 않아, 앱이 직접 물어보기로 전환했습니다.","대처":"대개 그 다음 질의에서 결과가 나옵니다. 여기서 최종 실패했다면 BF-RC와 같은 방향으로 — 비밀번호 ·2.4GHz·신호를 확인해 주세요."}},{"code":"BF-PW","stage":2,"stageName":"와이파이 전달","fields":{"여기까지 됐다":"와이파이 비밀번호가 기기에 전달됐습니다.","다음에서 멈췄다":"“이제 접속해라”라는 명령을 보내는 단계입니다.","대처":"다시 시도해 주세요. 반복되면 기기를 재시작한 뒤 처음부터 진행합니다."}},{"code":"BF-SS","stage":2,"stageName":"와이파이 전달","fields":{"여기까지 됐다":"와이파이 이름이 기기에 전달됐습니다.","다음에서 멈췄다":"비밀번호를 넘기는 단계입니다.","대처":"다시 시도해 주세요. 와이파이 이름에 특수문자나 이모지가 있으면 알려 주시면 도움이 됩니다."}},{"code":"BF-CD","stage":2,"stageName":"와이파이 전달","fields":{"여기까지 됐다":"접속 명령을 보냈습니다.","다음에서 멈췄다":"기기가 명령을 받았다는 확인이 오지 않았습니다.","대처":"기기를 가까이 두고 다시 시도해 주세요."}},{"code":"BF-CA","stage":2,"stageName":"와이파이 전달","fields":{"여기까지 됐다":"기기가 접속 명령을 받았다고 확인했습니다.","다음에서 멈췄다":"기기가 실제로 공유기에 붙는 과정입니다.","대처":"BF-RC와 같습니다 — 비밀번호, 2.4GHz 여부, 신호 세기 순으로 확인해 주세요."}},{"code":"BF-GT","stage":2,"stageName":"와이파이 전달","fields":{"여기까지 됐다":"와이파이 설정을 보낼 준비가 끝났습니다.","다음에서 멈췄다":"와이파이 이름을 전달하는 첫 단계입니다.","대처":"다시 시도해 주세요."}},{"code":"BF-TW","stage":2,"stageName":"와이파이 전달","fields":{"무슨 일":"이전 시도가 남긴 응답을 정리하며 기다리는 중이었습니다.","대처":"기기를 껐다 켜면 이전 상태가 완전히 지워집니다. 그 뒤 처음부터 진행해 주세요."}},{"code":"BF-TC","stage":2,"stageName":"와이파이 전달","fields":{"무슨 일":"이전 시도의 잔여 응답이 정리됐습니다.","대처":"정상 진행 표시입니다. 다시 시도해 주세요."}},{"code":"BF-QD","stage":2,"stageName":"와이파이 전달","fields":{"여기까지 됐다":"앱이 기기에 “와이파이 상태가 어떠냐”고 물었습니다.","다음에서 멈췄다":"기기가 답하지 않았습니다.","대처":"기기를 가까이 두고 다시 시도해 주세요."}},{"code":"BF-QA","stage":2,"stageName":"와이파이 전달","fields":{"여기까지 됐다":"기기가 질의를 받았습니다.","다음에서 멈췄다":"상태 답변이 오는 단계입니다.","대처":"와이파이 쪽을 확인해 주세요 — BF-RC와 같은 순서입니다."}},{"code":"BF-RS","stage":2,"stageName":"와이파이 전달","fields":{"무슨 일":"와이파이 연결에 성공했습니다. 실패 화면에 이게 떴다면 와이파이는 문제없고 그 뒤 기기 등록에서 막힌 것입니다. 단계 3의 CL- 코드를 함께 확인해 주세요. 기기 등록 와이파이는 이미 연결된 상태입니다. 이제 서버에 기기를 등록하고 소유권을 확정합니다. 여기 서 나오는 코드는 대부분 인터넷이나 서버 쪽을 가리킵니다."}},{"code":"CL-ST","stage":3,"stageName":"기기 등록","fields":{"무슨 일":"서버에 등록을 요청했는데 시간 안에 답이 오지 않았습니다.","대처":"휴대폰이 인터넷에 연결돼 있는지 확인하고 다시 시도해 주세요. 여러 사람이 동시에 겪는다면 서버 상태 를 확인해야 합니다."}},{"code":"CL-SN","stage":3,"stageName":"기기 등록","fields":{"무슨 일":"서버에 닿지 못했습니다.","대처":"휴대폰의 인터넷 연결을 확인해 주세요. 회사·학교 와이파이라면 방화벽이 막고 있을 수 있으니 모바일 데이터로 시도해 봅니다."}},{"code":"CL-SL","stage":3,"stageName":"기기 등록","fields":{"무슨 일":"짧은 시간에 시도가 너무 많아 서버가 잠시 막았습니다.","대처":"몇 분 기다린 뒤 다시 시도해 주세요. 연속으로 누르면 더 길어집니다."}},{"code":"CL-SA","stage":3,"stageName":"기기 등록","fields":{"무슨 일":"서버가 지금은 이 기기를 등록할 수 없다고 답했습니다.","대처":"기기가 이미 다른 계정에 등록돼 있을 수 있습니다. 기기 일련번호와 함께 개발에 전달해 주세요."}},{"code":"CL-SI","stage":3,"stageName":"기기 등록","fields":{"무슨 일":"서버 응답을 앱이 이해하지 못했습니다.","대처":"앱과 서버 버전이 맞지 않을 때 나옵니다. 앱을 최신으로 업데이트한 뒤에도 같으면 개발에 전달해 주세 요."}},{"code":"CL-SU","stage":3,"stageName":"기기 등록","fields":{"무슨 일":"서버가 예상하지 못한 오류를 돌려주었습니다.","대처":"한 번 재시도하고, 같으면 시각과 함께 개발에 전달해 주세요."}},{"code":"CL-SB","stage":3,"stageName":"기기 등록","fields":{"여기까지 됐다":"서버에 등록 요청을 보냈습니다.","다음에서 멈췄다":"응답이 오는 단계입니다.","대처":"인터넷 연결을 확인하고 다시 시도해 주세요."}},{"code":"CL-SR","stage":3,"stageName":"기기 등록","fields":{"여기까지 됐다":"서버가 등록 요청에 답했습니다.","다음에서 멈췄다":"받은 정보를 기기에 전달하는 단계입니다.","대처":"다시 시도해 주세요. 기기가 설정 모드에 있는지 함께 확인합니다."}},{"code":"CL-CD","stage":3,"stageName":"기기 등록","fields":{"여기까지 됐다":"등록 정보를 기기에 보냈습니다.","다음에서 멈췄다":"기기가 잘 받았다는 확인이 오지 않았습니다.","대처":"앱이 이때는 “저장된 연결 이어가기”를 안내합니다. 기기 앞면 사각 버튼을 2초 이상 눌러 QR이 뜨게 한 뒤 그 버튼을 눌러 주세요. 처음부터 다시 하지 않아도 됩니다."}},{"code":"CL-CA","stage":3,"stageName":"기기 등록","fields":{"여기까지 됐다":"기기가 등록 정보를 받았습니다.","다음에서 멈췄다":"서버에 최종 확정을 요청하는 단계입니다.","대처":"인터넷 연결을 확인하고 다시 시도해 주세요."}},{"code":"CL-RT","stage":3,"stageName":"기기 등록","fields":{"무슨 일":"기기가 “등록할 준비가 됐다”고 답하는 데 시간이 걸렸습니다.","대처":"앱이 자동으로 한 번 다시 연결해 시도합니다. 그래도 실패하면 기기를 껐다 켜고 처음부터 진행해 주세 요."}},{"code":"CL-RE","stage":3,"stageName":"기기 등록","fields":{"무슨 일":"기기 준비 상태를 확인하다 오류가 났습니다.","대처":"기기를 껐다 켠 뒤 다시 시도해 주세요."}},{"code":"CL-RB","stage":3,"stageName":"기기 등록","fields":{"여기까지 됐다":"기기에게 준비 상태를 물었습니다.","다음에서 멈췄다":"답을 받는 단계입니다.","대처":"기기를 가까이 두고 다시 시도해 주세요."}},{"code":"CL-RS","stage":3,"stageName":"기기 등록","fields":{"여기까지 됐다":"기기가 등록할 준비를 마쳤습니다.","다음에서 멈췄다":"서버와의 등록 절차입니다.","대처":"인터넷 연결을 확인하고 다시 시도해 주세요."}},{"code":"CL-PT","stage":3,"stageName":"기기 등록","fields":{"무슨 일":"기기에 저장된 이전 등록 정보를 찾는 데 시간이 걸렸습니다.","대처":"다시 시도해 주세요. 반복되면 기기를 껐다 켜고 처음부터 진행합니다."}},{"code":"CL-PE","stage":3,"stageName":"기기 등록","fields":{"무슨 일":"기기에 저장된 이전 등록 정보를 읽다 오류가 났습니다.","대처":"앱이 자동으로 연결을 새로 맺어 한 번 더 시도합니다. 그래도 안 되면 기기를 재시작해 주세요."}},{"code":"CL-PB","stage":3,"stageName":"기기 등록","fields":{"여기까지 됐다":"이전에 진행하던 등록이 있는지 기기에 물었습니다.","대처":"다시 시도해 주세요."}},{"code":"CL-PR","stage":3,"stageName":"기기 등록","fields":{"여기까지 됐다":"이전 등록 정보 조회가 끝났습니다.","대처":"정상 진행 표시입니다. 다음 단계 코드를 함께 확인해 주세요."}},{"code":"CL-AT","stage":3,"stageName":"기기 등록","fields":{"무슨 일":"이 기기를 되찾을 수 있는지 서버에 물었는데 답이 늦었습니다.","대처":"인터넷 연결을 확인하고 다시 시도해 주세요."}},{"code":"CL-AE","stage":3,"stageName":"기기 등록","fields":{"무슨 일":"기기 복구 가능 여부를 확인하다 오류가 났습니다.","대처":"재시도 후에도 같으면 기기 일련번호와 함께 개발에 전달해 주세요."}},{"code":"CL-AB","stage":3,"stageName":"기기 등록","fields":{"여기까지 됐다":"복구 가능 여부를 서버에 물었습니다.","대처":"인터넷 연결을 확인하고 다시 시도해 주세요."}},{"code":"CL-AR","stage":3,"stageName":"기기 등록","fields":{"여기까지 됐다":"서버가 복구 가능 여부를 알려 주었습니다.","대처":"정상 진행 표시입니다. 마무리 거의 끝났습니다. 소유권을 확정하고 기기가 재시작해 음성 서버에 붙습니다. 이 구간의 실패는 이미 등록이 반쯤 진행된 상태일 수 있어 처음부터 다시 하지 않아도 되는 경우가 많습니다."}},{"code":"CL-FT","stage":4,"stageName":"마무리","fields":{"무슨 일":"마지막 확정 요청에 서버가 시간 안에 답하지 않았습니다.","대처":"인터넷 연결을 확인하고 다시 시도해 주세요. 기기가 이미 등록됐을 수 있으니, 앱을 다시 열어 기기가 보 이는지 먼저 확인합니다."}},{"code":"CL-FE","stage":4,"stageName":"마무리","fields":{"무슨 일":"마지막 확정 단계에서 오류가 났습니다.","대처":"앱을 다시 열어 기기가 등록돼 있는지 확인해 주세요. 없다면 시각과 함께 개발에 전달해 주세요."}},{"code":"CL-FB","stage":4,"stageName":"마무리","fields":{"여기까지 됐다":"마지막 확정을 요청했습니다.","대처":"인터넷 연결을 확인하고 다시 시도해 주세요."}},{"code":"CL-FR","stage":4,"stageName":"마무리","fields":{"여기까지 됐다":"서버가 등록을 확정했습니다.","다음에서 멈췄다":"기기 재시작이나 음성 서버 연결 단계입니다.","대처":"기기가 스스로 재시작할 시간을 1~2분 주고 앱을 다시 열어 보세요."}},{"code":"CL-TD","stage":4,"stageName":"마무리","fields":{"무슨 일":"등록 도중 블루투스 연결이 끊어졌습니다.","대처":"등록 마지막에 기기가 재시작하면서 끊기는 것은 정상입니다. 1~2분 기다렸다 앱을 다시 열어 기기가 보 이는지 확인해 주세요. 그전에 끊겼다면 기기를 가까이 두고 다시 시도합니다."}},{"code":"CL-CX","stage":4,"stageName":"마무리","fields":{"무슨 일":"진행하던 등록 시도가 취소됐습니다.","대처":"사용자가 뒤로 가거나 다시 시작할 때 나옵니다. 문제가 아닙니다."}},{"code":"CL-DP","stage":4,"stageName":"마무리","fields":{"무슨 일":"등록 화면을 벗어나면서 정리됐습니다.","대처":"문제가 아닙니다. 에스컬레이션 테스터에게 물어볼 것 릴리스 앱은 상세 로그를 남기지 않습니다. 대신 아래 다섯 가지면 대부분의 원인이 좁혀집니다. 1. 실패 화면 스크린샷 — 지원 코드와 안내 문구가 함께 찍히게 2. 어느 화면이었는지 — “기기와 연결하는 중” / “와이파이에 연결하는 중” / “기기 연 결을 준비하는 중” 3. 몇 번째 시도인지 — 처음부터 안 됐는지, 되다가 안 됐는지 4. 와이파이 종류 — 집 공유기 / 회사 / 휴대폰 핫스팟, 그리고 2.4GHz 여부 5. 기기 상태 — 앞면 버튼을 길게 눌렀을 때 QR이 뜨는지 펌웨어를 의심해야 하는 경우 앱 1.2.13 이상에서 BF-EP가 계속 나온다면, 그건 링크가 붙자마자 끊어진다는 뜻입니다. 앱이 할 수 있는 재시도는 이미 다 한 상태이므로 기기 쪽 확인이 필요합니다. 이 경우에만 펌웨어 팀에 넘겨 주 세요. 나머지 코드는 전부 앱이나 서버, 또는 사용 환경에서 해결할 수 있는 범위입니다. 코드 정의 출처: blufi_stage_receipts.dart , device_claim_stage_receipts.dart . 지원 코드는 개인정보나 와이파이 비밀번호를 담지 않으며, 어느 단계까지 진행됐는지만 나타냅니다."}}]</script><script>
+/* 지원 코드 사전 — 코드·증상 검색 */
+(function(){
+  var el = document.getElementById('cddata');
+  if(!el) return;
+  var DATA = JSON.parse(el.textContent);
+  var q = document.getElementById('cdq'),
+      list = document.getElementById('cdl'),
+      count = document.getElementById('cdn'),
+      filters = document.getElementById('cdf');
+  var stage = 0;
+
+  function esc(t){ return String(t).replace(/[&<>"]/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];
+  }); }
+
+  function mark(text, term){
+    var out = esc(text);
+    if(!term) return out;
+    var re = new RegExp('(' + term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')','gi');
+    return out.replace(re, '<mark>$1</mark>');
+  }
+
+  function render(){
+    var term = q.value.trim();
+    var needle = term.toLowerCase().replace(/\s+/g,'');
+    var hits = DATA.filter(function(e){
+      if(stage && e.stage !== stage) return false;
+      if(!needle) return true;
+      var hay = (e.code + ' ' + e.stageName + ' ' +
+                 Object.keys(e.fields).map(function(k){ return e.fields[k]; }).join(' '))
+                .toLowerCase().replace(/\s+/g,'');
+      return hay.indexOf(needle) > -1;
+    });
+
+    count.textContent = hits.length + '개 코드' + (term ? ' · “' + term + '”' : '');
+
+    if(!hits.length){
+      list.innerHTML = '<p class="cd-empty">일치하는 코드가 없습니다. 코드 앞 두 글자(BF, CL)나 증상 단어로 다시 찾아보세요.</p>';
+      return;
+    }
+
+    list.innerHTML = hits.map(function(e){
+      var fields = Object.keys(e.fields).map(function(k){
+        var act = (k === '대처') ? ' act' : '';
+        return '<div class="cd-f' + act + '"><dt>' + esc(k) + '</dt><dd>' + mark(e.fields[k], term) + '</dd></div>';
+      }).join('');
+      return '<dl class="cd-item">' +
+        '<div><span class="cd-code">' + mark(e.code, term) + '</span>' +
+        '<span class="cd-stage">단계 ' + e.stage + ' · ' + esc(e.stageName) + '</span></div>' +
+        '<div class="cd-fields">' + fields + '</div></dl>';
+    }).join('');
+  }
+
+  q.addEventListener('input', render);
+  filters.addEventListener('click', function(ev){
+    var b = ev.target.closest('button'); if(!b) return;
+    stage = Number(b.getAttribute('data-s'));
+    [].forEach.call(filters.querySelectorAll('button'), function(x){ x.classList.toggle('on', x === b); });
+    render();
+  });
+  render();
+})();
+</script><script>
+/* 베타 테스터 온보딩 — OS 전환 + 장별 렌더 */
+(function(){
+  var node=document.getElementById('obdata');
+  var body=document.getElementById('obbody');
+  var nav=document.getElementById('obnav');
+  var tabs=document.getElementById('obos');
+  if(!node||!body) return;
+  var D=JSON.parse(node.textContent);
+  var os='and';
+
+  function keep(b){ return !b.os || b.os===os; }
+
+  function block(b){
+    var x=b.x;
+    if(b.t==='p')  return '<p>'+x+'</p>';
+    if(b.t==='h')  return '<div class="ob-h">'+x+'</div>';
+    if(b.t==='ul') return '<ul class="ob-ul">'+x.map(function(i){return '<li>'+i+'</li>'}).join('')+'</ul>';
+    if(b.t==='steps') return '<div class="ob-steps">'+x.map(function(s){
+        return '<div class="ob-step"><h5>'+s.t+'</h5>'+(s.d?'<p>'+s.d+'</p>':'')+'</div>';
+      }).join('')+'</div>';
+    if(b.t==='table'){
+      var th=b.h.map(function(h){return '<th>'+h+'</th>'}).join('');
+      var tr=x.map(function(r){
+        return '<tr>'+r.map(function(c){return '<td>'+(c||'&nbsp;')+'</td>'}).join('')+'</tr>';
+      }).join('');
+      return '<div class="ob-tw"><table class="ob-tb"><thead><tr>'+th+'</tr></thead><tbody>'+tr+'</tbody></table></div>';
+    }
+    if(b.t==='call'){
+      var k={warn:'주의',info:'참고',star:'핵심'}[b.k]||'참고';
+      return '<div class="ob-call '+b.k+'"><span class="k">'+k+'</span><h5>'+b.ti+'</h5>'
+           + x.map(function(p){return '<p>'+p+'</p>'}).join('')+'</div>';
+    }
+    if(b.t==='check')
+      return '<div class="ob-chk"><span class="k">'+b.ti+'</span><ul>'
+           + x.map(function(i){return '<li>'+i+'</li>'}).join('')+'</ul></div>';
+    if(b.t==='img')
+      return '<figure class="ob-shot"><img data-img="'+b.img+'" alt="'+x.replace(/"/g,'&quot;')+'">'
+           + '<figcaption>'+x+'</figcaption></figure>';
+    if(b.t==='vid')
+      return '<a class="ob-vid" href="https://youtube.com/shorts/'+b.vid+'" target="_blank" rel="noopener">'
+           + '<img src="https://i.ytimg.com/vi/'+b.vid+'/oardefault.jpg" alt="" aria-hidden="true" '
+           + 'onerror="this.onerror=null;this.src=\'https://i.ytimg.com/vi/'+b.vid+'/hqdefault.jpg\'">'
+           + '<span class="ob-vp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>영상으로 보기 ↗</span>'
+           + '<span class="ob-vc">'+x+'</span></a>';
+    return '';
+  }
+
+  function render(){
+    body.innerHTML = D.chapters.map(function(c,i){
+      var inner = c.b.filter(keep).map(block).join('');
+      return '<details class="ob-ch" id="ob-'+c.n+'"'+(i===0?' open':'')+'>'
+           +   '<summary class="ob-sum"><span class="ob-no">'+c.n+'</span>'
+           +     '<span class="ob-tt">'+c.t+'<em>'+c.en+'</em></span>'
+           +     '<span class="ob-cv" aria-hidden="true"></span></summary>'
+           +   '<div class="ob-in">'+inner+'</div>'
+           + '</details>';
+    }).join('');
+  }
+
+  nav.innerHTML = D.chapters.map(function(c){
+    return '<a href="#ob-'+c.n+'" data-n="'+c.n+'">'+c.n+' · '+c.t+'</a>';
+  }).join('');
+
+  nav.addEventListener('click',function(e){
+    var a=e.target.closest('a'); if(!a) return;
+    var el=document.getElementById('ob-'+a.dataset.n);
+    if(el) el.open=true;
+  });
+
+  tabs.addEventListener('click',function(e){
+    var b=e.target.closest('.ob-t'); if(!b||b.dataset.os===os) return;
+    os=b.dataset.os;
+    Array.prototype.forEach.call(tabs.querySelectorAll('.ob-t'),function(t){
+      var on=t.dataset.os===os;
+      t.classList.toggle('on',on); t.setAttribute('aria-selected',on?'true':'false');
+    });
+    var open=Array.prototype.map.call(body.querySelectorAll('details'),function(d){return d.open});
+    render();
+    Array.prototype.forEach.call(body.querySelectorAll('details'),function(d,i){ d.open=!!open[i] });
+  });
+
+  render();
+})();
+</script><script>
+/* data URI 이미지 주입 + 빠른 문의 버튼 노출 */
+(function(){
+  var src=document.getElementById('imgIosHotspot');
+  function paint(){
+    if(!src) return;
+    var u=src.textContent.trim();
+    Array.prototype.forEach.call(document.querySelectorAll('img[data-img="ios-hotspot"]:not([src])'),function(i){ i.src=u; });
+  }
+  paint();
+  document.addEventListener('click',function(){ setTimeout(paint,60) },true);
+  new MutationObserver(paint).observe(document.body,{childList:true,subtree:true});
+
+  var q=document.getElementById('qask');
+  if(q){
+    var toggle=function(){ q.classList.toggle('on', window.scrollY > window.innerHeight*0.6) };
+    toggle(); window.addEventListener('scroll',toggle,{passive:true});
+  }
+})();
+</script><script src="assets/site.js" defer></script><script type="module" src="assets/atmosphere.js"></script></body></html>
