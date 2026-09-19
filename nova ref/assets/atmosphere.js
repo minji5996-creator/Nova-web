@@ -2,19 +2,36 @@
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const fine=matchMedia('(any-pointer: fine)');
 const canvas=document.createElement('canvas');canvas.className='nova-pixel-trail';canvas.setAttribute('aria-hidden','true');document.body.append(canvas);
-const pen=canvas.getContext('2d');let particles=[],frame=0,lastEmit=0,lastX=0,lastY=0,lastFrame=0;
+const pen=canvas.getContext('2d');let particles=[],frame=0,lastPoint=null,travel=0,lastFrame=0;
 function resize(){const scale=Math.min(devicePixelRatio||1,2);canvas.width=Math.ceil(innerWidth*scale);canvas.height=Math.ceil(innerHeight*scale);pen?.setTransform(scale,0,0,scale,0,0);}
-function clearTrail(){cancelAnimationFrame(frame);frame=0;lastFrame=0;particles=[];pen?.clearRect(0,0,innerWidth,innerHeight);}
+function clearTrail(){cancelAnimationFrame(frame);frame=0;lastFrame=0;lastPoint=null;travel=0;particles=[];pen?.clearRect(0,0,innerWidth,innerHeight);}
 function draw(now){frame=0;const dt=lastFrame?Math.min((now-lastFrame)/1000,.05):.016;lastFrame=now;pen.clearRect(0,0,innerWidth,innerHeight);
  particles=particles.filter(p=>p.life>0);for(const p of particles){p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=14*dt;pen.globalAlpha=Math.max(0,p.life/p.max)*.6;pen.fillStyle=p.color;pen.fillRect(Math.round(p.x),Math.round(p.y),p.size,p.size);}pen.globalAlpha=1;
  if(particles.length)frame=requestAnimationFrame(draw);else lastFrame=0;
 }
 document.addEventListener('pointermove',event=>{
  if(!pen||event.pointerType!=='mouse'||!fine.matches||reduced.matches||document.hidden)return;
- const now=performance.now();if(now-lastEmit<26)return;
- const dx=Math.max(-25,Math.min(25,event.clientX-lastX)),dy=Math.max(-25,Math.min(25,event.clientY-lastY));lastX=event.clientX;lastY=event.clientY;lastEmit=now;
- for(let i=0;i<2;i++){const life=.28+Math.random()*.24;particles.push({x:lastX+(Math.random()-.5)*8,y:lastY+7+(Math.random()-.5)*6,vx:-dx*.65+(Math.random()-.5)*22,vy:-dy*.4+8+Math.random()*13,life,max:life,size:Math.random()>.78?3:2,color:Math.random()>.3?'#8ce7df':'#dbefff'});}if(particles.length>46)particles.splice(0,particles.length-46);if(!frame)frame=requestAnimationFrame(draw);
+ // Sample by distance, so slow movement responds and fast movement leaves no gaps.
+ const point={x:event.clientX,y:event.clientY};
+ if(!lastPoint){lastPoint=point;return;}
+ const dx=point.x-lastPoint.x,dy=point.y-lastPoint.y,distance=Math.hypot(dx,dy);
+ if(distance>0){
+  const spacing=6,total=travel+distance,count=Math.floor(total/spacing);
+  // Bound work even when the pointer jumps across a large display.
+  const stride=Math.max(1,Math.ceil(count/36));
+  for(let i=1;i<=count;i+=stride){
+   const t=(i*spacing-travel)/distance,life=.25+Math.random()*.17;
+   particles.push({x:lastPoint.x+dx*t,y:lastPoint.y+dy*t+5,
+    vx:-dx/distance*10+(Math.random()-.5)*8,vy:-dy/distance*10+7,
+    life,max:life,size:Math.random()>.85?3:2,color:Math.random()>.3?'#8ce7df':'#dbefff'});
+  }
+  travel=total%spacing;lastPoint=point;
+ }
+ if(particles.length>96)particles.splice(0,particles.length-96);
+ if(particles.length&&!frame)frame=requestAnimationFrame(draw);
 },{passive:true});
+document.documentElement.addEventListener('pointerleave',clearTrail);
+document.addEventListener('pointercancel',clearTrail);
 addEventListener('resize',resize,{passive:true});addEventListener('blur',clearTrail);reduced.addEventListener('change',clearTrail);resize();
 
 const audioButton=document.createElement('button');audioButton.type='button';audioButton.className='nova-audio-toggle';audioButton.setAttribute('aria-pressed','false');audioButton.title='잔잔한 배경 음악과 버튼 효과음 켜기';audioButton.innerHTML='<span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="sound-label">사운드 켜기</span>';document.body.append(audioButton);

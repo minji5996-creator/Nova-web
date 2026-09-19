@@ -23,7 +23,7 @@ function animate(now){
  frame=0;if(!enabled||!visible||document.hidden)return;
  const dt=previousTime?Math.min((now-previousTime)/1000,.05):0;previousTime=now;time+=dt;
  if(time>=nextChange)setMood(moods[(moods.indexOf(mood)+1)%moods.length]);
- const ease=1-Math.exp(-6*dt);x+=(targetX-x)*ease;y+=(targetY-y)*ease;
+ const ease=1-Math.exp(-16*dt);x+=(targetX-x)*ease;y+=(targetY-y)*ease;
  const lift=Math.sin(time*.85)*8;const sway=Math.sin(time*.55)*.9;
  const progress=Math.min(1,Math.max(0,(time-reactionStart)/1.1));
  const pulse=Math.sin(progress*Math.PI),wave=Math.sin(progress*Math.PI*2)*pulse;
@@ -35,8 +35,9 @@ function animate(now){
 }
 function start(){if(enabled&&visible&&!document.hidden&&!frame)frame=requestAnimationFrame(animate);}
 function setEnabled(value){enabled=value;reactionStart=-10;label();if(enabled)start();else{stop();neutral();}}
-visual.addEventListener('pointermove',event=>{const rect=visual.getBoundingClientRect();targetX=Math.max(-1,Math.min(1,(event.clientX-rect.left)/rect.width*2-1));targetY=Math.max(-1,Math.min(1,(event.clientY-rect.top)/rect.height*2-1));},{passive:true});
+visual.addEventListener('pointermove',event=>{if(event.pointerType!=='mouse'||!enabled)return;const rect=visual.getBoundingClientRect();targetX=Math.max(-1,Math.min(1,(event.clientX-rect.left)/rect.width*2-1));targetY=Math.max(-1,Math.min(1,(event.clientY-rect.top)/rect.height*2-1));},{passive:true});
 function release(){targetX=0;targetY=0;}
+addEventListener('blur',release);
 visual.addEventListener('pointerleave',release);visual.addEventListener('pointercancel',release);
 visual.addEventListener('pointerup',event=>{if(event.pointerType!=='mouse')release();});
 motionButton.addEventListener('click',()=>setEnabled(!enabled));
